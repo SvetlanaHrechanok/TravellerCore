@@ -1,0 +1,68 @@
+﻿@model TravellerCore.Data.LogicalTravelModel
+@{
+    Hotel hotel = ViewBag.Hotel;
+}
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="/Home/Index">HOME <span class="sr-only">(current)</span></a></li>
+                <li><a href="/Home/About">ABOUT </a></li>
+                <li><a href="/Home/Contact">CONTACT </a></li>
+            </ul>
+
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<div class="row tour">
+
+    <div class="col-sm-12">
+        <!--Создаю основной блок-->
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <!--Указываю количество индикаторов в соответствии с количеством изображений-->
+            <ol class="carousel-indicators">
+                @Html.GetIndicator(hotel)
+            </ol>
+            <!--Заполняю слайды-->
+            <center>
+                <div class="carousel-inner" role="listbox">
+                    @Html.GetCarousel(hotel)
+                </div>
+            </center>
+
+            <!--Создаю боковые кнопки управления-->
+            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="read">
+            <h3>Hotel's name  is @Model.NameHotel </h3>
+            <h4>Date of arrival @Model.DateArrival</h4>
+            <h3>Price @Model.Price$</h3>
+            <h3>@Model.AmountDay days</h3>
+            <h3>Cost is @ViewBag.Cost$</h3>
+            <p>@Model.AboutHotel</p>
+        </div>
+    </div>
+</div>
+
